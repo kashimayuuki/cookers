@@ -1,0 +1,2 @@
+class Menugenre < ApplicationRecord
+end
