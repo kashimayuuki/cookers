@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  # 管理者側 devise
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: 'admin/sessions'
+  }
+  
+  # ユーザー側 devise
+  devise_for :users, skip: [:passwords],controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
@@ -18,12 +29,6 @@ Rails.application.routes.draw do
     resources :genres
     resources :comments
   end
-  devise_for :admin, skip: [:registrations, :passwords], contcollers: {
-    sessions: 'admin/sessions'
-  }
-  devise_for :users, skip: [:passwords],controller: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

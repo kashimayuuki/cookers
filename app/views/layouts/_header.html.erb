@@ -3,9 +3,81 @@
     <div class = "container">
       <a class = "navbar-brand" href = "/"><span>COOKERS</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-      </span>
+        <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+             <li>
+               <%= link_to user_path(current_user),class: 'btn' do%>
+                  マイページ
+               <% end %>
+             </li>
+             <li>
+               <%= link_to new_menu_path,class: 'btn' do%>
+                  新規メニュー投稿
+               <% end %>
+             </li>
+             <li>
+               <%= link_to menus_path,class: 'btn' do%>
+                  メニュー一覧
+               <% end %>
+             </li>
+             <li>
+               <%= link_to favorites_path,class: 'btn' do%>
+                  お気に入り一覧
+               <% end %>
+             </li>
+             <li>
+               <%= link_to destroy_user_session_path, method: :delete,class: 'btn' do%>
+                  ログアウト
+               <% end %>
+             </li>
+            <% elsif admin_signed_in? %>
+             <li>
+               <%= link_to admin_root_path,class: 'btn' do%>
+                  メニュー一覧
+               <% end %>
+             </li>
+             <li>
+               <%= link_to admin_users_path,class: 'btn' do%>
+                  ユーザー一覧
+               <% end %>
+             </li>
+             <li>
+               <%= link_to admin_comments_path,class: 'btn' do%>
+                  コメント一覧
+               <% end %>
+             </li>
+             <li>
+               <%= link_to admin_genres_path,class: 'btn' do%>
+                  ジャンル一覧
+               <% end %>
+             </li>
+             <li>
+               <%= link_to destroy_admin_session_path, method: :delete,class: 'btn' do%>
+                  ログアウト
+               <% end %>
+             </li>
+            <% else %>
+             <li>
+               <%= link_to  about_path,class: 'btn' do%>
+                  About
+               <% end %>
+             </li>
+             <li>
+               <%= link_to new_user_registration_path ,class: 'btn' do%>
+                  新規登録
+               <% end %>
+             </li>
+             <li>
+               <%= link_to new_user_session_path ,class: 'btn ' do%>
+                  ログイン
+               <% end %>
+             </li>
+            <% end %>
+          </ul>
+      </div>
     </div>
   </nav>
 </header>

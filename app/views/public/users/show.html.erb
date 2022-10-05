@@ -1,2 +1,24 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <h3>マイページ</h3>
+    <!--ユーザー情報-->
+    <table class = 'table table-hover'>
+      <tr>
+    	  <th>名前</th>
+    	  <th><%= @user.name %></th>
+      </tr>
+      <tr>
+    	  <th>メールアドレス</th>
+    	  <th><%= @user.email %></th>
+      </tr>
+    </table>
+      <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary btn-block" do%>
+        <i class="fas fa-user-cog"></i>
+      <%end%>
+    <table class = "table">
+      <!--ユーザー毎の投稿メニュー-->
+      <!--< @menus.each do |menu| %>-->
+      <!--< end %>-->
+    </table>
+  </div>
+</div>
