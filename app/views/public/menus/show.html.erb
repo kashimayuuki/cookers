@@ -1,2 +1,43 @@
-<h1>Public::Menus#show</h1>
-<p>Find me in app/views/public/menus/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5">メニュー詳細</h3>
+        <!--商品画像-->
+      <div class="text-center">
+        <%= image_tag @menu.image, size: "350x220" %>
+    　</div>
+
+        <!--商品詳細-->
+      <div class="text-center">
+        <br>
+        <table class="table">
+          <tr>
+            <th>商品名</th>
+            <td><%= @menu.title %></td>
+          </tr>
+
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @menu.genres.name %></td>
+          </tr>
+
+          <tr>
+            <th>商品説明</th>
+            <td><%= @menu.body %></td>
+          </tr>
+        </table>
+      </div>
+
+       <div class="text-center">
+        <table class="table">
+          <% if current_user %>
+          <!--編集ボタン-->
+          <th><%= link_to "編集する", edit_menu_path(@menu), class: 'btn btn-success' %></th>
+          <!--あとで削除-->
+          <th><%= link_to "削除する", menu_path(@menu), method: :delete, data: {confirm:  "本当に削除しますか？"}, class: "btn btn-danger" %></th>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,40 @@
-<h1>Public::Menus#new</h1>
-<p>Find me in app/views/public/menus/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5">新規投稿</h3>
+      <!--form_with記述-->
+      <%= form_with model: @menu, url: menus_path, method: :post, local: true do |f| %>
+
+        <!--商品画像--><!--Q:画像選択のフォームがわからない-->
+        <div class="field text-center mt-4">
+          <%= f.label :"料理画像" %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+
+        <!--商品名-->
+        <div class="field text-center mt-4">
+          <%= f.label :"料理名", class: "mr-3"%>
+          <%= f.text_field :title %>
+        </div>
+
+        <!--ジャンル--><!--Q:ジャンルを選択するフォームがわからない-->
+        <div class="field text-center mt-4">
+          <%= f.label :"ジャンル" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+        </div>
+
+        <!--調理方法-->
+        <div class="field text-center mt-4">
+          <%= f.label :"調理方法", class: "mr-3" %>
+          <%= f.text_area :body %>
+        </div>
+
+        <!--新規登録-->
+        <div class="actions text-center mt-4">
+          <!--<= f.submit "新規登録", class: 'btn btn-success' >-->
+          <%= f.submit "新規登録",class: "btn btn-success px-5 mt-4" %>
+        </div>
+　　　<% end %>
+　　</div>
+　</div>
+</div>
