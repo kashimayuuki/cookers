@@ -8,12 +8,13 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = customer_user
+    @user = current_user
   end
 
   def update
-    @user = customer_user
-
+    @user = current_user
+    @user.update(user_params)
+    redirect_to user_path(current_user)
   end
 
   def unsubscribe
@@ -22,6 +23,6 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-
+     params.require(:user).permit(:email, :name, :introduction)
   end
 end

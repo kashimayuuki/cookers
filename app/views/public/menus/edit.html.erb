@@ -1,2 +1,32 @@
-<h1>Public::Menus#edit</h1>
-<p>Find me in app/views/public/menus/edit.html.erb</p>
+    <!--form_with記述-->
+<%= form_with model: @menu, url: menu_path(@menu), method: :patch, local: true do |f| %>
+
+    <!--商品画像-->
+  <div class="field text-center mt-4">
+    <%= f.label :"料理画像" %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+
+    <!--商品名-->
+  <div class="field text-center mt-4">
+    <%= f.label :"メニュー名", class: "mr-3" %>
+    <%= f.text_field :title %>
+  </div>
+
+    <!--ジャンル--><!--Q:ジャンルを選択するフォームがわからない-->
+  <div class="field text-center mt-4">
+    <%= f.label :"ジャンル", class: "mr-3" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  </div>
+
+    <!--商品説明-->
+  <div class="field text-center mt-4">
+    <%= f.label :"メニュー説明", class: "mr-3" %>
+    <%= f.text_area :body %>
+  </div>
+
+    <!--変更ボタン-->
+  <div class="actions text-center mt-4">
+    <%= f.submit "変更を保存", class: "btn btn-primary" %>
+  </div>
+<% end %>
