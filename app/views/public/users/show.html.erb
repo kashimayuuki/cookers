@@ -17,8 +17,14 @@
       <%end%>
     <table class = "table">
       <!--ユーザー毎の投稿メニュー-->
-      <!--< @menus.each do |menu| %>-->
-      <!--< end %>-->
+      <% @user.menus.each do |menu| %>
+        <div class="mr-4 mt-4">
+          <%= link_to menu_path(menu) do %>
+            <%= image_tag menu.image, size:"150x120" %>
+          <% end %>
+          <p class="text-center"><strong><%= menu.title %></strong></p>
+        </div>
+      <% end %>
     </table>
   </div>
 </div>

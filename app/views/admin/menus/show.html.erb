@@ -1,2 +1,32 @@
-<h1>Admin::Menus#show</h1>
-<p>Find me in app/views/admin/menus/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5">メニュー詳細</h3>
+        <!--画像-->
+      <div class="text-center">
+        <%= image_tag @menu.image, size: "350x220" %>
+    　</div>
+
+        <!--メニュー詳細-->
+      <div class="text-center">
+        <br>
+        <table class="table">
+          <tr>
+            <th>メニュー名</th>
+            <td><%= @menu.title %></td>
+          </tr>
+
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @menu.genres.name %></td>
+          </tr>
+
+          <tr>
+            <th>メニュー説明</th>
+            <td><%= @menu.body %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

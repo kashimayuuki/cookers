@@ -15,10 +15,14 @@
             <th>メニュー名</th>
             <td><%= @menu.title %></td>
           </tr>
-
+          <% if @menu.user_id != current_user.id %>
+          <tr>
+            <%= render "public/favorites/favorite", menu: @menu%>
+          </tr>
+          <% end %>
           <tr>
             <th>ジャンル</th>
-            <td><%= @menu.genres.name %></td>
+            <td><%= @menu.genre.name %></td>
           </tr>
 
           <tr>
@@ -30,7 +34,7 @@
 
        <div class="text-center">
         <table class="table">
-          <% if current_user %>
+          <% if @menu.user == current_user %>
           <!--編集ボタン-->
           <th><%= link_to "編集する", edit_menu_path(@menu), class: 'btn btn-success' %></th>
           <!--あとで削除-->

@@ -1,2 +1,22 @@
-<h1>Public::Favorites#index</h1>
-<p>Find me in app/views/public/favorites/index.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <!--<div class="col-md-3">-->
+      <!--部分テンプレート-->
+    <!--  <= render "public/menus/genre_search", genres: @genres %>-->
+    <!--</div>-->
+    <div class="col-8 ml-2">
+      <div class="contents" style="display:flex; flex-wrap:wrap;">
+        <% @favorites.each do |favorite| %>
+          <div class="mr-4 mt-4">
+            <%= link_to menu_path(favorite.menu_id) do %>
+              <%= image_tag favorite.menu.image, size:"150x120" %>
+            <% end %>
+            <p class="text-center"><strong><%= favorite.menu.title %></strong></p>
+          </div>
+          <!--<= render "public/favorites/favorite",menu: menu%>-->
+        <% end %>
+      </div>
+      <p class="text-center"><strong> <%= paginate @favorites %></strong></p>
+    </div>
+  </div>
+</div>

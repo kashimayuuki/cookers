@@ -1,10 +1,22 @@
-<div class="contents" style="display:flex; flex-wrap:wrap;">
-  <% @menus.each do |menu| %>
-    <div class="mr-4 mt-4">
-      <%= link_to menu_path(menu) do %>
-        <%= image_tag menu.image, size:"200x120" %>
-      <% end %>
-      <p class="text-center"><strong><%= menu.title %></strong></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <!--部分テンプレート-->
+      <%= render "public/menus/genre_search", genres: @genres %>
     </div>
-  <% end %>
+    <div class="col-8 ml-2">
+      <div class="contents" style="display:flex; flex-wrap:wrap;">
+        <% @menus.each do |menu| %>
+          <div class="mr-4 mt-4">
+            <%= link_to menu_path(menu) do %>
+              <%= image_tag menu.image, size:"150x120" %>
+            <% end %>
+            <p class="text-center"><strong><%= menu.title %></strong></p>
+          </div>
+          <!--<= render "public/favorites/favorite",menu: menu%>-->
+        <% end %>
+      </div>
+      <p class="text-center"><strong> <%= paginate @menus %></strong></p>
+    </div>
+  </div>
 </div>

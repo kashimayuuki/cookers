@@ -1,0 +1,15 @@
+<% if menu.favorites?(current_user) %>
+  <p>
+    <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+    <%= link_to menu_favorites_path(menu), method: :delete, remote: true do %>
+      ♥<%= menu.favorites.count %>
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+    <%= link_to menu_favorites_path(menu), method: :post, remote: true do %>
+      ♡<%= menu.favorites.count %>
+    <% end %>
+  </p>
+<% end %>
