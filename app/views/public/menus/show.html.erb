@@ -8,29 +8,35 @@
     　</div>
 
         <!--メニュー詳細-->
-      <div class="text-center">
-        <br>
-        <table class="table">
-          <tr>
-            <th>メニュー名</th>
-            <td><%= @menu.title %></td>
-          </tr>
-          <% if @menu.user_id != current_user.id %>
-          <tr>
-            <%= render "public/favorites/favorite", menu: @menu%>
-          </tr>
-          <% end %>
-          <tr>
-            <th>ジャンル</th>
-            <td><%= @menu.genre.name %></td>
-          </tr>
+        <div class="text-center">
+          <br>
+          <table class="table">
+            <tr>
+              <th>メニュー名</th>
+              <td><%= @menu.title %></td>
+            </tr>
+            <% if @menu.user_id != current_user.id %>
+            <tr class = "">
+              <%= render "public/favorites/favorite", menu: @menu%>
+            </tr>
+            <% end %>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @menu.genre.name %></td>
+            </tr>
 
-          <tr>
-            <th>メニュー説明</th>
-            <td><%= @menu.body %></td>
-          </tr>
-        </table>
-      </div>
+            <tr>
+              <th>メニュー説明</th>
+              <td><%= @menu.body %></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class = "comments-index">
+          <%= render "public/comments/index", menu: @menu %>
+        </div>
+          <%= render "public/comments/form", menu: @menu, comment: @comment %>
+        </div>
 
        <div class="text-center">
         <table class="table">

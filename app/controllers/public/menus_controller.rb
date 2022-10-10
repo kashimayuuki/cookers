@@ -24,6 +24,9 @@ class Public::MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
 
+    @comments = @menu.comments  #投稿詳細に関連付けてあるコメントを全取得
+    @comment = current_user.comments.new  #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
+
     favorites = Favorite.where(user_id: current_user.id).pluck(:menu_id)  # ログイン中のユーザーのお気に入りのmenu_idカラムを取得
     @favorite_list = Menu.find(favorites)     # menusテーブルから、お気に入り登録済みのレコードを取得
   end
