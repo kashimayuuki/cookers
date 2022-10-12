@@ -11,7 +11,7 @@ class Public::FavoritesController < ApplicationController
     if @menu.user_id != current_user.id   # 投稿者本人以外に限定
       @favorite = Favorite.create(user_id: current_user.id, menu_id: @menu.id)
       @favorite.save
-      redirect_to menu_path(params[:menu_id])
+      # redirect_to menu_path(params[:menu_id]) 非同期通信の設定
     end
   end
 
@@ -19,7 +19,7 @@ class Public::FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find_by(user_id: current_user.id, menu_id: @menu.id)
     @favorite.destroy
-    redirect_to menu_path(params[:menu_id])
+    # redirect_to menu_path(params[:menu_id]) 非同期通信設定
   end
 
   private

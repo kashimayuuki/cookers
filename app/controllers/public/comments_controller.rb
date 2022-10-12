@@ -5,7 +5,7 @@ class Public::CommentsController < ApplicationController
     @comment.menu = menu
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to menu_path(menu)
+    # redirect_to menu_path(menu)
   end
 
   def destroy
@@ -15,7 +15,7 @@ class Public::CommentsController < ApplicationController
     # @comment.menu = menu
     # @comment.user_id = current_user.id
     @comment.destroy
-    redirect_to menu_path(menu)
+    # redirect_to menu_path(menu)
   end
 
 

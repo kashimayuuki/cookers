@@ -2,10 +2,29 @@
   <div class="row">
     <div class="col-md-8 offset-2">
       <h3 class="my-4 mt-5">メニュー詳細</h3>
-        <!--画像-->
+      
+      <!--画像-->
       <div class="text-center">
         <%= image_tag @menu.image, size: "350x220" %>
     　</div>
+    　
+    　<!--編集削除-->
+      <div class="text-center">
+        <table class="table">
+          <% if @menu.user == current_user %>
+          <!--編集ボタン-->
+          <th><%= link_to "編集する", edit_menu_path(@menu), class: 'btn btn-success' %></th>
+          <!--あとで削除-->
+          <th><%= link_to "削除する", menu_path(@menu), method: :delete, data: {confirm:  "本当に削除しますか？"}, class: "btn btn-danger" %></th>
+          <% end %>
+        </table>
+    　  
+    　   <!--いいね機能の非同期通信-->
+        <% if @menu.user_id != current_user.id %>
+          <div id = "favorite_buttons_<%= @menu.id %>">
+            <%= render "public/favorites/favorite", menu: @menu%>
+          </div>
+        <% end %>
 
         <!--メニュー詳細-->
         <div class="text-center">
@@ -15,38 +34,22 @@
               <th>メニュー名</th>
               <td><%= @menu.title %></td>
             </tr>
-            <% if @menu.user_id != current_user.id %>
-            <tr class = "">
-              <%= render "public/favorites/favorite", menu: @menu%>
-            </tr>
-            <% end %>
             <tr>
               <th>ジャンル</th>
               <td><%= @menu.genre.name %></td>
             </tr>
-
             <tr>
               <th>メニュー説明</th>
               <td><%= @menu.body %></td>
             </tr>
           </table>
         </div>
-
+  
         <div class = "comments-index">
           <%= render "public/comments/index", menu: @menu %>
         </div>
-          <%= render "public/comments/form", menu: @menu, comment: @comment %>
-        </div>
+        <%= render "public/comments/form", menu: @menu, comment: @comment %>
 
-       <div class="text-center">
-        <table class="table">
-          <% if @menu.user == current_user %>
-          <!--編集ボタン-->
-          <th><%= link_to "編集する", edit_menu_path(@menu), class: 'btn btn-success' %></th>
-          <!--あとで削除-->
-          <th><%= link_to "削除する", menu_path(@menu), method: :delete, data: {confirm:  "本当に削除しますか？"}, class: "btn btn-danger" %></th>
-          <% end %>
-        </table>
       </div>
     </div>
   </div>
