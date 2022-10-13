@@ -1,2 +1,37 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5"><%= @user.name %>さんの会員情報編集</h3>
+
+      <%= form_with model: @user,url: admin_user_path, method: :patch, local:true do |f| %>
+      <table class='table table-hover'>
+    	  <th>会員ID</th>
+    	  <th><%= @user.id %></th>
+          <tr class="form-group">
+            <th><%= f.label :"氏名"%></th>
+            <th><%= f.text_field :name,autofocus: true ,class: "form-control last_name" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"メールアドレス"%></th>
+            <th><%= f.email_field :email,autofocus: true, class: "form-control customer.email" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"会員ステータス"%></th>
+            <th>
+              <%= f.radio_button :is_valid, '有効' %>
+              <%= f.label :is_valid, '有効' %>
+            </th>
+            <th>
+              <%= f.radio_button :is_valid, '退会' %>
+              <%= f.label :is_valid, '退会' %>
+            </th>
+          </tr>
+          <tr class="form-group">
+            <th></th>
+            <th><%= f.submit "変更する", class: 'btn btn-success' %></th>
+          </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

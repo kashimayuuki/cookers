@@ -1,2 +1,10 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class ="container">
+  <!--<div class="row">-->
+    <%= render 'show' ,user: @user %>
+    <div class="text-center">
+      <table class="table">
+        <th><%= link_to '編集する', edit_admin_user_path(@user), class: "btn btn-sm btn-success" %></th>
+      </table>
+    </div>
+  <!--</div>-->
+</div>

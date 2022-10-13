@@ -1,2 +1,40 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-2'>
+      <h3 class="my-4 mt-5">会員一覧</h3>
+
+      <table class="table table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= user.id %>
+              </td>
+              <td>
+              <%= link_to admin_user_path(user) do%>
+                <%= user.name %>
+              <% end %>
+              </td>
+              <% if user.is_valid == '有効'  %>
+          	    <th class = "text-success">
+          	      <%= user.is_valid %>
+          	    </th>
+          	  <%else%>
+          	    <th class = "text-danger">
+          	      <%= user.is_valid %>
+          	    </th>
+          	  <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+        <p><%= paginate @users %></p>
+    </div>
+  </div>
