@@ -8,7 +8,7 @@
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
-            <th>ステータス</th>
+            <th>コメント数</th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
           	    </th>
           	  <%else%>
           	    <th class = "text-danger">
-          	      <%= user.is_valid %>
+          	      <%= user.comments.count %>
           	    </th>
           	  <% end %>
             </tr>

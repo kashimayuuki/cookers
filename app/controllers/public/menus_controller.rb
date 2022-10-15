@@ -12,6 +12,7 @@ class Public::MenusController < ApplicationController
 
   def index
     @genres = Genre.all
+    @all_ranks = Menu.find(Favorite.group(:menu_id).order('count(menu_id) desc').limit(3).pluck(:menu_id))
     #ジャンルを選択したとき
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
@@ -45,6 +46,13 @@ class Public::MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     @menu.destroy
     redirect_to menus_path(@menu)
+  end
+
+  def search
+    @menus = Menu.search(params[:keyword]).page(params[:page]).per(12)
+    @keyword = params[:keyword]
+    @genres = Genre.all
+    render "index"
   end
 
   private

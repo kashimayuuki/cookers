@@ -3,8 +3,7 @@ class Public::FavoritesController < ApplicationController
   before_action :set_menu, except: [:index] #exceptは覗く時に活用
   before_action :authenticate_user!   # ログイン中のユーザーのみに許可（未ログインなら、ログイン画面へ移動）
   def index
-    user = current_user
-    @favorites = user.favorites.page(params[:page]).per(12)
+    @favorites = current_user.favorites.page(params[:page]).per(12)
   end
 
   # お気に入り登録

@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  # ゲストユーザー機能
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
@@ -22,7 +27,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :favorites, only: [:index]
-    resources :search
+    get 'search' => 'menus#search'
+
   end
 
   namespace :admin do
