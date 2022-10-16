@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
-
-   before_action :ensure_guest_user, only: [:show, :edit]
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:show, :edit]
   def index
   end
 

@@ -9,7 +9,7 @@
   <p>
     <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
     <%= link_to menu_favorites_path(menu), method: :post, remote: true do %>
-      ♡<%= menu.favorites.count %>
+      ♡<%= menu.favorites.count %>お気に入り
     <% end %>
   </p>
 <% end %>

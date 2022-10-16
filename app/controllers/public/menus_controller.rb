@@ -1,4 +1,5 @@
 class Public::MenusController < ApplicationController
+  before_action :authenticate_user!
   def new
     @menu = Menu.new
   end
@@ -13,13 +14,7 @@ class Public::MenusController < ApplicationController
   def index
     @genres = Genre.all
     @all_ranks = Menu.find(Favorite.group(:menu_id).order('count(menu_id) desc').limit(3).pluck(:menu_id))
-    #ジャンルを選択したとき
-    if params[:genre_id]
-      @genre = Genre.find(params[:genre_id])
-      @menus = @genre.menus.page(params[:page]).per(12)
-    else #ジャンル選択していない時
-      @menus = Menu.all.page(params[:page]).per(12)
-    end
+    @menus = Menu.all.page(params[:page]).per(12)
   end
 
   def show
@@ -49,7 +44,12 @@ class Public::MenusController < ApplicationController
   end
 
   def search
-    @menus = Menu.search(params[:keyword]).page(params[:page]).per(12)
+    @all_ranks = Menu.find(Favorite.group(:menu_id).order('count(menu_id) desc').limit(3).pluck(:menu_id))
+    if params[:genres].present?
+      @menus = Menu.where(genre_id: params[:genres]).page(params[:page]).per(12)
+    else
+      @menus = Menu.search(params[:keyword]).page(params[:page]).per(12)
+    end
     @keyword = params[:keyword]
     @genres = Genre.all
     render "index"

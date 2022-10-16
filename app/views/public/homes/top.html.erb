@@ -1,17 +1,32 @@
-<div class ="container">
-  <div class ="row">
-    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-      <div class ="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-        </div>
-        <div class="row">
-          <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
-        </div>
-        <div class="row">
-          <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>
-        </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 ml-2">
+      <div class = "top-image ml-4">
+        <%= image_tag "image_cook", size:"640×426" %>
+          <p style="position:absolute; top:130px; left:100px; background-color:rgba(0,0,0,0.5); color:#FFF;">
+            <br>
+              このサイトは、料理等こをするコミュニティになります。<br>
+              会員でない方もサイトの観覧は行えます。<br>
+              投稿又はさまざまな料理の観覧には会員登録が必要になります。<br>
+            <br>
+          </p>
       </div>
+    </div>
+    <div class = "offset-md-1">
+      <h3 class = "text-danger">メニューランキング</h3>
+      <% @all_ranks.each.with_index(1) do |menu,i|%>
+        <div class=" mt-4">
+          <p>
+            第<%= i %>位
+            <strong>
+              <%= menu.title %>
+            </strong>
+          </p><br>
+          <%= link_to menu_path(menu) do %>
+            <%= image_tag menu.image, size:"150x120" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -6,27 +6,36 @@
           <%= f.text_field :keyword, value: @keyword %>
           <%= f.submit "検索" %>
         <% end %>
+        <!--部分テンプレート-->
+        <%= render "public/menus/genre_search", genres: @genres %>
       </div>
-      <!--部分テンプレート-->
-      <%= render "public/menus/genre_search", genres: @genres %>
+      <h4>メニューランキング</h4>
+      <% @all_ranks.each.with_index(1) do |menu,i|%>
+        <div class="mr-4 mt-4">
+          第<%= i %>位<br>
+          <%= link_to menu_path(menu) do %>
+            <%= image_tag menu.image, size:"200x120" %>
+          <% end %>
+          <p class="text-center"><strong><%= menu.title %></strong></p>
+        </div>
+      <% end %>
     </div>
     <div class="col-8 ml-2">
       <div class = "row">
-        <% @all_ranks.each.with_index(1) do |menu,i|%>
-          <div class="mr-4 mt-4">
-            第<%= i %>位<br>
-            <%= link_to menu_path(menu) do %>
-              <%= image_tag menu.image, size:"150x120" %>
-            <% end %>
-            <p class="text-center"><strong><%= menu.title %></strong></p>
-          </div>
-        <% end %>
+        <h3>メニュー一覧</h3>
+        <h5>
+          <%= link_to new_menu_path,class: 'btn' do%>
+            <i class="fas fa-cookie"></i>
+            新規メニュー
+            <i class="fas fa-cookie"></i>
+          <% end %>
+        </h5>
       </div>
       <div class="contents" style="display:flex; flex-wrap:wrap;">
         <% @menus.each do |menu| %>
           <div class="mr-4 mt-4">
             <%= link_to menu_path(menu) do %>
-              <%= image_tag menu.image, size:"150x120" %>
+              <%= image_tag menu.image, size:"210x170" %>
             <% end %>
             <p class="text-center"><strong><%= menu.title %></strong></p>
           </div>

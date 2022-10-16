@@ -1,15 +1,14 @@
 <div class="container">
+  <h3 class="my-4 mt-5">メニュー詳細</h3>
   <div class="row">
-    <div class="col-md-8 offset-2">
-      <h3 class="my-4 mt-5">メニュー詳細</h3>
-
-      <!--画像-->
-      <div class="text-center">
-        <%= image_tag @menu.image, size: "350x220" %>
-    　</div>
-
-    　<!--編集削除-->
-      <div class="text-center">
+    <div class="col-md-3">
+      <div class = "row">
+        <!--画像-->
+        <div class="text-center">
+          <td><%= @menu.title %></td>
+          <%= image_tag @menu.image, size: "300x300" %>
+      　</div>
+        　<!--編集削除-->
         <table class="table">
           <% if @menu.user == current_user %>
           <!--編集ボタン-->
@@ -18,22 +17,21 @@
           <th><%= link_to "削除する", menu_path(@menu), method: :delete, data: {confirm:  "本当に削除しますか？"}, class: "btn btn-danger" %></th>
           <% end %>
         </table>
+      </div>
+    </div>
 
+    <div class = " col-md-5">
+      <div class="text-center">
     　   <!--いいね機能の非同期通信-->
         <% if @menu.user_id != current_user.id %>
           <div id = "favorite_buttons_<%= @menu.id %>">
             <%= render "public/favorites/favorite", menu: @menu%>
           </div>
         <% end %>
-
         <!--メニュー詳細-->
         <div class="text-center">
           <br>
           <table class="table">
-            <tr>
-              <th>メニュー名</th>
-              <td><%= @menu.title %></td>
-            </tr>
             <tr>
               <th>ジャンル</th>
               <td><%= @menu.genre.name %></td>
@@ -44,13 +42,14 @@
             </tr>
           </table>
         </div>
-
-        <div class = "comments-index">
-          <%= render "public/comments/index", menu: @menu %>
-        </div>
-        <%= render "public/comments/form", menu: @menu, comment: @comment %>
-
       </div>
     </div>
   </div>
+
+    <div class = "col-md-3">
+      <div class = "comments-index">
+        <%= render "public/comments/index", menu: @menu %>
+      </div>
+        <%= render "public/comments/form", menu: @menu, comment: @comment %>
+    </div>
 </div>
