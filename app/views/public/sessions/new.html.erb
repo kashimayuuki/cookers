@@ -9,20 +9,28 @@
       <p class="text-center mb-4">会員の方はこちらからログイン</p>
 
       <%= form_with model:resource, as: resource_name, url: session_path(resource_name) do |f| %>
-
-        <div class="field text-center mb-4">
-          <%= f.label :"メールアドレス", class: "mr-3" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-40" %>
+      <table class="table table-borderless table-sm">
+        <div class="field">
+          <tr>
+            <td><%= f.label :"メールアドレス" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-40" %></td>
+          </tr>
         </div>
 
-        <div class="field text-center">
-          <%= f.label :"パスワード", class: "mr-5" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "w-40" %>
+        <div class="field">
+          <tr>
+            <td><%= f.label :"パスワード"%></td>
+            <td><%= f.password_field :password, autocomplete: "current-password", class: "w-40" %></td>
+          </tr>
         </div>
 
-        <div class="actions text-center mt-4">
-          <%= f.submit "ログイン",class: "btn btn-primary px-5 mt-4" %>
+        <div class="actions">
+          <tr>
+            <td></td>
+            <td><%= f.submit "ログイン",class: "btn btn-primary px-5 mt-4" %></td>
+          </tr>
         </div>
+      </table>
       <% end %>
       <h4 class="text-right my-4 mt-5">会員登録がお済みでない方</h4>
       <div class="text-right">
