@@ -1,35 +1,37 @@
-<!--<div class='container'>-->
-  <div class='row'>
-    <div class='col-md-8 offset-2'>
-      <h3 class="my-4 mt-5"><%= user.name %>さんの会員詳細</h3>
-      <table class="table">
-        <thead>
-          <tr>
-			      <th>会員ID</th>
-			      <td><%= user.id %></td>
-			    </tr>
-			    <tr>
-					  <th>氏名</th>
-					  <td><%= user.name %></td>
-			    </tr>
-			    <tr>
-					  <th>メールアドレス</th>
-					  <td><%= user.email %></td>
-			    </tr>
-			    <tr>
-					  <th>会員ステータス</th>
-					  <% if user.is_valid == '有効'  %>
-					  <th class = "text-success">
-					  <%= user.is_valid %>
-					  </th>
-					<%else%>
-					  <th class = "text-danger">
-					  <%= user.is_valid %>
-					  </th>
-		    	<% end %>
-		  	</tr>
-	    </thead>
-	  </table>
-		</div>
-	</div>
-<!--</div>-->
+<div class='col-md-4'>
+  <h3 class="my-4 mt-5"><%= user.name %>さんの会員詳細</h3>
+  <table class="table">
+    <thead>
+      <tr>
+	      <th>会員ID</th>
+	      <td><%= user.id %></td>
+	    </tr>
+	    <tr>
+			  <th>氏名</th>
+			  <td><%= user.name %></td>
+	    </tr>
+	    <tr>
+			  <th>メールアドレス</th>
+			  <td><%= user.email %></td>
+	    </tr>
+	    <tr>
+			  <th>会員ステータス</th>
+			  <% if user.is_valid == '有効'  %>
+				  <th class = "text-success">
+				  	<%= user.is_valid %>
+				  </th>
+				<%else%>
+				  <th class = "text-danger">
+				 	  <%= user.is_valid %>
+				  </th>
+		  	<% end %>
+  		</tr>
+	  </thead>
+	</table>
+	<table class="center">
+	  <th><%= link_to '編集する', edit_admin_user_path(user), class: "btn btn-sm btn-success" %></th>
+	</table>
+</div>
+
+
+

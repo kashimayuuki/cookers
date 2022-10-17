@@ -15,7 +15,6 @@
             <th>メニュー名</th>
             <td><%= @menu.title %></td>
           </tr>
-
           <tr>
             <th>ジャンル</th>
             <td><%= @menu.genre.name %></td>
@@ -26,6 +25,7 @@
             <td><%= @menu.body %></td>
           </tr>
         </table>
+          <%= link_to "削除", admin_menu_path(@menu), method: :delete, class: "btn btn-danger pull-center"%>
       </div>
     </div>
   </div>

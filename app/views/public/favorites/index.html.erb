@@ -1,19 +1,15 @@
 <div class="container mt-5">
+  <h4>お気に入り一覧</h4>
   <div class="row">
-    <!--<div class="col-md-3">-->
-      <!--部分テンプレート-->
-    <!--  <= render "public/menus/genre_search", genres: @genres %>-->
-    <!--</div>-->
     <div class="col-8 ml-2">
       <div class="contents" style="display:flex; flex-wrap:wrap;">
         <% @favorites.each do |favorite| %>
           <div class="mr-4 mt-4">
             <%= link_to menu_path(favorite.menu_id) do %>
-              <%= image_tag favorite.menu.image, size:"150x120" %>
+              <%= image_tag favorite.menu.image, size:"250x200" %>
             <% end %>
             <p class="text-center"><strong><%= favorite.menu.title %></strong></p>
           </div>
-          <!--<= render "public/favorites/favorite",menu: menu%>-->
         <% end %>
       </div>
       <p class="text-center"><strong> <%= paginate @favorites %></strong></p>

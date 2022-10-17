@@ -1,10 +1,15 @@
-<div class="contents" style="display:flex; flex-wrap:wrap;">
-  <% @menus.each do |menu| %>
-    <div class="mr-4 mt-4">
-      <%= link_to admin_menu_path(menu) do %>
-        <%= image_tag menu.image, size:"150x120" %>
+<div class = "container">
+  <h4>メニュー一覧</h4>
+  <div class = "row">
+    <div class="contents" style="display:flex; flex-wrap:wrap;">
+      <% @menus.each do |menu| %>
+        <div class="mr-4 mt-4">
+          <%= link_to admin_menu_path(menu) do %>
+            <%= image_tag menu.image, size:"250x200" %>
+          <% end %>
+          <p class="text-center"><strong><%= menu.title %></strong></p>
+        </div>
       <% end %>
-      <p class="text-center"><strong><%= menu.title %></strong></p>
     </div>
-  <% end %>
+  </div>
 </div>
