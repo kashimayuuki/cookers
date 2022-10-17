@@ -44,12 +44,13 @@
         </div>
       </div>
     </div>
-  </div>
-
-    <div class = "col-md-3">
-      <div class = "comments-index">
-        <%= render "public/comments/index", menu: @menu %>
+    <div class = "col-md-8">
+      <div class = "text-center">
+        <div id = "comments_index" class="mb-2 bg-light border" style="height: 30vh; overflow-y: scroll;">
+          <%= render "public/comments/index", menu: @menu %>
+        </div>
+          <%= render "public/comments/form", menu: @menu, comment: @comment %>
       </div>
-        <%= render "public/comments/form", menu: @menu, comment: @comment %>
     </div>
+  </div>
 </div>

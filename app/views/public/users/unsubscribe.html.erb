@@ -1,2 +1,16 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-2'>
+      <h1 class="my-4 mt-5 text-center">本当に退会しますか？</h1>
+        <p class="text-center">
+          退会すると、会員、会員登録情報や</br>
+          これまでの購入履歴が閲覧できなくなります。</br>
+          退会する場合は「退会する」をクリックしてください。</br>
+        </p>
+        <p class="text-center">
+          <%= link_to "退会しない", user_path(current_user) , class: "btn btn-primary mr-5" %>
+          <%= link_to "退会する", user_withdrawal_path, class: "btn btn-danger ml-5" , method: :patch %>
+        </p>
+    </div>
+  </div>
+</div>

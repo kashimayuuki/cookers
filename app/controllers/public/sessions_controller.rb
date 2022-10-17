@@ -32,13 +32,15 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  protected
+
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
-  def customer_state
-    @customer = Customer.find_by(email: params[:customer][:email])
-    if @customer
-      if @customer.valid_password?(params[:custmoer][:password]) && (@customer.is_valid == '退会')
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_user_registration
+  def reject_inactive_user
+    @user = User.find_by(name: params[:user][:name])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && !@user.is_valid
+        redirect_to new_user_session_path
       end
     end
   end

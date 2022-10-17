@@ -19,8 +19,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :users do
-      get 'users/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-      patch 'users/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+      get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+      patch 'users/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     end
     resources :menus do
       resource :favorites, only: [:create, :destroy]
