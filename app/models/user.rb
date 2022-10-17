@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy     # ユーザー/お気に入り → 1:多
   has_many :comments
 
+  enum is_valid: { '有効': true, '退会': false }
+
 
   # ゲストユーザー機能
   def self.guest
@@ -18,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (is_valid == true)
+    super && (is_valid == '有効')
   end
 
 end

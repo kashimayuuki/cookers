@@ -22,14 +22,17 @@
                 <%= user.name %>
               <% end %>
               </td>
+        	    <td class = "text-danger">
+        	      <%= user.comments.count %>
+        	    </td>
               <% if user.is_valid == '有効'  %>
-          	    <th class = "text-success">
+          	    <td class = "text-success">
           	      <%= user.is_valid %>
-          	    </th>
+          	    </td>
           	  <%else%>
-          	    <th class = "text-danger">
-          	      <%= user.comments.count %>
-          	    </th>
+          	    <td class = "text-danger">
+          	      <%= user.is_valid %>
+          	    </td>
           	  <% end %>
             </tr>
           <% end %>
