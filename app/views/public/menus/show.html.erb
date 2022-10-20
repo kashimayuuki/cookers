@@ -5,7 +5,7 @@
       <div class = "row">
         <!--画像-->
         <div class="text-center">
-          <td><%= @menu.title %></td>
+          <h4><%= @menu.title %></h4>
           <%= image_tag @menu.image, size: "300x300" %>
       　</div>
         　<!--編集削除-->
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class = " col-md-5">
+    <div class = " col-md-8">
       <div class="text-center">
     　   <!--いいね機能の非同期通信-->
         <% if @menu.user_id != current_user.id %>
@@ -28,22 +28,24 @@
             <%= render "public/favorites/favorite", menu: @menu%>
           </div>
         <% end %>
+
         <!--メニュー詳細-->
-        <div class="text-center">
+        <div class="text-left">
           <br>
           <table class="table">
             <tr>
-              <th>ジャンル</th>
+              <td>ジャ<br>ンル</td>
               <td><%= @menu.genre.name %></td>
             </tr>
             <tr>
-              <th>メニュー説明</th>
-              <td><%= @menu.body %></td>
+              <td>調理<br>方法</td>
+              <td><%= safe_join(@menu.body.split("\n"),tag(:br)) %></td>
             </tr>
           </table>
         </div>
       </div>
     </div>
+
     <div class = "col-md-8">
       <div class = "text-center">
         <div id = "comments_index" class="mb-2 bg-light border" style="height: 30vh; overflow-y: scroll;">

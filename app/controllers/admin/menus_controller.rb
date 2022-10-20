@@ -1,4 +1,5 @@
 class Admin::MenusController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @menu = Menu.find(params[:id])
   end

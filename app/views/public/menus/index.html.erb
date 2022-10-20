@@ -23,6 +23,7 @@
     <div class="col-8 ml-2">
       <div class = "row">
         <h3>メニュー一覧</h3>
+        <% if current_user.email != "guest@example.com" %>
         <h5>
           <%= link_to new_menu_path,class: 'btn' do%>
             <i class="fas fa-cookie"></i>
@@ -30,6 +31,7 @@
             <i class="fas fa-cookie"></i>
           <% end %>
         </h5>
+        <% end %>
       </div>
       <div class="contents" style="display:flex; flex-wrap:wrap;">
         <% @menus.each do |menu| %>

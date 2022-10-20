@@ -6,33 +6,47 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-             <li>
-               <%= link_to user_path(current_user),class: 'btn' do%>
-                  マイページ
-               <% end %>
-             </li>
-             <li>
-               <%= link_to new_menu_path,class: 'btn' do%>
-                  新規メニュー投稿
-               <% end %>
-             </li>
-             <li>
-               <%= link_to menus_path,class: 'btn' do%>
-                  メニュー一覧
-               <% end %>
-             </li>
-             <li>
-               <%= link_to favorites_path,class: 'btn' do%>
-                  お気に入り一覧
-               <% end %>
-             </li>
-             <li>
-               <%= link_to destroy_user_session_path, method: :delete,class: 'btn' do%>
-                  ログアウト
-               <% end %>
-             </li>
+              <% if current_user.email != "guest@example.com" %>
+               <li>
+                 <%= link_to user_path(current_user),class: 'btn' do%>
+                    マイページ
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to menus_path,class: 'btn' do%>
+                    メニュー一覧
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to favorites_path,class: 'btn' do%>
+                    お気に入り一覧
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to destroy_user_session_path, method: :delete,class: 'btn' do%>
+                    ログアウト
+                 <% end %>
+               </li>
+              <% else %>
+                <li>
+                 <%= link_to menus_path,class: 'btn' do%>
+                    メニュー一覧
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to favorites_path,class: 'btn' do%>
+                    お気に入り一覧
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to destroy_user_session_path, method: :delete,class: 'btn' do%>
+                    ログアウト
+                 <% end %>
+               </li>
+              <% end %>
+
             <% elsif admin_signed_in? %>
              <li>
                <%= link_to admin_root_path,class: 'btn' do%>
@@ -54,6 +68,7 @@
                   ログアウト
                <% end %>
              </li>
+
             <% else %>
              <li>
                <%= link_to new_user_registration_path ,class: 'btn' do%>

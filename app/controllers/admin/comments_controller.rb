@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_admin!
   def index
   end
 
@@ -7,7 +8,7 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @comment = @user.comments
+    @comment = @user.comments.find_by(id: params[:comment_id])
     @comment.destroy
     redirect_to admin_user_path(@user)
   end
