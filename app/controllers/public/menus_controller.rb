@@ -7,8 +7,11 @@ class Public::MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
-    @menu.save
-    redirect_to menu_path(@menu.id)
+    if @menu.save
+      redirect_to menu_path(@menu.id)
+    else
+      render "new"
+    end
   end
 
   def index

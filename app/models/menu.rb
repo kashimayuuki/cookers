@@ -7,6 +7,11 @@ class Menu < ApplicationRecord
   has_many :favorites ,dependent: :destroy      # メニュー/お気に入り → 1:多
   has_many :comments ,dependent: :destroy
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :genre_id, presence: true
+  validates :image, presence: true
+
   # 中間テーブル
   # has_many :menugenres
   # has_many :genres, through: :menugenres
