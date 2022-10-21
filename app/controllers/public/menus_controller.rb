@@ -36,8 +36,11 @@ class Public::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    @menu.update(menu_params)
-    redirect_to menu_path(@menu)
+    if @menu.update(menu_params)
+      redirect_to menu_path(@menu)
+    else
+      render "edit"
+    end
   end
 
   def destroy

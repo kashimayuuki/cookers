@@ -1,32 +1,51 @@
-    <!--form_with記述-->
-<%= form_with model: @menu, url: menu_path(@menu), method: :patch, local: true do |f| %>
+<div class = "container">
+  <%= render "public/menus/error", menu: @menu %>
+  <div class = "row">
+        <!--form_with記述-->
+    <%= form_with model: @menu, url: menu_path(@menu), method: :patch, local: true do |f| %>
+      <table class = "table table-borderless">
+          <!--商品画像-->
+        <div class="field">
+          <tr>
+            <td><%= f.label :"料理画像" %></td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+        </div>
 
-    <!--商品画像-->
-  <div class="field text-center mt-4">
-    <%= f.label :"料理画像" %>
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
+          <!--商品名-->
+        <div class="field">
+          <tr>
+            <td><%= f.label :"メニュー名", class: "mr-3" %></td>
+            <td><%= f.text_field :title %></td>
+          </tr>
+        </div>
 
-    <!--商品名-->
-  <div class="field text-center mt-4">
-    <%= f.label :"メニュー名", class: "mr-3" %>
-    <%= f.text_field :title %>
-  </div>
+          <!--ジャンル--><!--Q:ジャンルを選択するフォームがわからない-->
+        <div class="field">
+          <tr>
+            <td><%= f.label :"ジャンル", class: "mr-3" %></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+          </tr>
+        </div>
 
-    <!--ジャンル--><!--Q:ジャンルを選択するフォームがわからない-->
-  <div class="field text-center mt-4">
-    <%= f.label :"ジャンル", class: "mr-3" %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-  </div>
+          <!--商品説明-->
+        <div class="field">
+          <tr>
+            <td><%= f.label :"メニュー説明", class: "mr-3" %></td>
+            <td><%= f.text_area :body %></td>
+          </tr>
+        </div>
 
-    <!--商品説明-->
-  <div class="field text-center mt-4">
-    <%= f.label :"メニュー説明", class: "mr-3" %>
-    <%= f.text_area :body %>
-  </div>
+          <!--変更ボタン-->
+        <div class="actions">
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+          </tr>
 
-    <!--変更ボタン-->
-  <div class="actions text-center mt-4">
-    <%= f.submit "変更を保存", class: "btn btn-primary" %>
+        </div>
+      </table>
+    <% end %>
+
   </div>
-<% end %>
+</div>

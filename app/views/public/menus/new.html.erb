@@ -1,12 +1,12 @@
 <div class="container">
+  <%= render "public/menus/error", menu: @menu %>
   <div class="row">
     <div class="col-md-8 offset-2">
       <h3 class="my-4 mt-5">新規投稿</h3>
-      <%= render "public/menus/error", menu: @menu %>
 
       <!--form_with記述-->
       <%= form_with model: @menu, url: menus_path, method: :post, local: true do |f| %>
-        <table class = "table table-borderless table-sm">
+        <table class = "table table-borderless">
           <!--商品画像--><!--Q:画像選択のフォームがわからない-->
           <div class="field">
             <tr>
