@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy     # ユーザー/お気に入り → 1:多
   has_many :comments
 
+  validates :name, presence: true
+
   enum is_valid: { '有効': true, '退会': false }
 
 

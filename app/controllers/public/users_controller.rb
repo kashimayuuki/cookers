@@ -15,8 +15,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to user_path(current_user)
+    if @user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      render "edit"
+    end
   end
 
   def unsubscribe

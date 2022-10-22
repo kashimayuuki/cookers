@@ -10,6 +10,8 @@ module Cookers
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    # 日本語の言語設定
+   config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -18,5 +20,7 @@ module Cookers
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+
   end
 end
