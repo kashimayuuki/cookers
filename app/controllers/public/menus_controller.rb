@@ -1,5 +1,7 @@
 class Public::MenusController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def new
     @menu = Menu.new
   end
@@ -65,5 +67,12 @@ class Public::MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:title, :body, :image, :genre_id)
+  end
+
+  def ensure_correct_user
+    @menu = Menu.find(params[:id])
+    unless @menu.user == current_user
+       redirect_to menus_path
+    end
   end
 end

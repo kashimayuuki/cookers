@@ -34,11 +34,11 @@
           <br>
           <table class="table">
             <tr>
-              <td>ジャ<br>ンル</td>
+              <td class = "col-2">ジャンル</td>
               <td><%= @menu.genre.name %></td>
             </tr>
             <tr>
-              <td>調理<br>方法</td>
+              <td>調理方法</td>
               <td><%= safe_join(@menu.body.split("\n"),tag(:br)) %></td>
             </tr>
           </table>

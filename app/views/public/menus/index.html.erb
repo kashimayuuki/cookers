@@ -24,16 +24,15 @@
       <div class = "row">
         <h3>メニュー一覧</h3>
         <% if current_user.email != "guest@example.com" %>
-        <h5>
-          <%= link_to new_menu_path,class: 'btn' do%>
-            <i class="fas fa-cookie"></i>
-            新規メニュー
-            <i class="fas fa-cookie"></i>
+          <%= link_to new_menu_path,class: 'btn btn-outline-success' do%>
+              <i class="fas fa-cookie"></i>
+              メニュー投稿
+              <i class="fas fa-cookie"></i>
           <% end %>
-        </h5>
         <% end %>
       </div>
-      <div class="contents" style="display:flex; flex-wrap:wrap;">
+
+      <div class = "contents" style="display:flex; flex-wrap:wrap;">
         <% @menus.each do |menu| %>
           <div class="mr-4 mt-4">
             <%= link_to menu_path(menu) do %>
