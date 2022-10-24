@@ -16,7 +16,7 @@
           <%= link_to menu_path(menu) do %>
             <%= image_tag menu.image, size:"200x120" %>
           <% end %>
-          <p class="text-center"><strong><%= menu.title %></strong></p>
+          <p class="text-center overflow-ellipsis"><strong><%= menu.title %></strong></p>
         </div>
       <% end %>
     </div>
@@ -39,7 +39,7 @@
             <%= link_to menu_path(menu) do %>
               <%= image_tag menu.image, size:"210x170" %>
             <% end %>
-            <p class="text-center"><strong><%= menu.title %></strong></p>
+            <p class="text-center overflow-ellipsis"><strong><%= menu.title.truncate(10) %></strong></p>
           </div>
           <!--<= render "public/favorites/favorite",menu: menu%>-->
         <% end %>

@@ -8,7 +8,7 @@
             <%= link_to menu_path(favorite.menu_id) do %>
               <%= image_tag favorite.menu.image, size:"250x200" %>
             <% end %>
-            <p class="text-center"><strong><%= favorite.menu.title %></strong></p>
+            <p class="text-center overflow-ellipsis"><strong><%= favorite.menu.title.truncate(10) %></strong></p>
           </div>
         <% end %>
       </div>

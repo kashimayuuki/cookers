@@ -18,8 +18,8 @@
         <div class=" mt-4">
           <p>
             第<%= i %>位
-            <strong>
-              <%= menu.title %>
+            <strong class = "overflow-ellipsis">
+              <%= menu.title.truncate(10) %>
             </strong>
           </p><br>
           <%= link_to menu_path(menu) do %>
