@@ -28,14 +28,16 @@
 - 料理の改善を望みたい時
 
 ## 設計書
--
--
--
+- ER図
+- https://app.diagrams.net/#G1jwXqw8ytVyiwavnmGCElN3ax9BuGg7SV
+- テーブル定義書
+- https://docs.google.com/spreadsheets/d/1jL39hCkXIiicoJHs3_cTtzbkLRz29N4RKO3FBY3KsIs/edit#gid=856357510
 
 ### 実装機能
 - ユーザー側
 - ブックマーク機能
 - 投稿機能
+- 退会機能
 - コメント機能
 - 管理者側
 - コメント削除機能
