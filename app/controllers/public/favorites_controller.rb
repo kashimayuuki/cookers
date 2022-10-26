@@ -2,6 +2,8 @@ class Public::FavoritesController < ApplicationController
 
   before_action :set_menu, except: [:index] #exceptは覗く時に活用
   before_action :authenticate_user!   # ログイン中のユーザーのみに許可（未ログインなら、ログイン画面へ移動）
+  before_action :ensure_correct_user, only: [:create, :destroy]
+
   def index
     @favorites = current_user.favorites.page(params[:page]).per(12)
   end
@@ -26,5 +28,12 @@ class Public::FavoritesController < ApplicationController
 
   def set_menu
     @menu = Menu.find(params[:menu_id])
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+       redirect_to menus_path
+    end
   end
 end
