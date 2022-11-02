@@ -10,8 +10,9 @@ module Cookers
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.paths.add 'lib', eager_load: true # 追加
     # 日本語の言語設定
-   config.i18n.default_locale = :ja
+    config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
