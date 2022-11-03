@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :withdrawal, :unsubscribe]
+  before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:show, :edit]
 
   def index
@@ -24,8 +24,6 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def unsubscribe
-  end
 
   def withdrawal
     @user = current_user

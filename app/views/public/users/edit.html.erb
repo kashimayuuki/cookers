@@ -15,7 +15,7 @@
           <div class="text-center">
           <table class="table table-hover">
             <th><%= f.submit "編集内容を保存", class: 'btn btn-success' %></th>
-            <th><%= link_to "退会する" , user_unsubscribe_path(current_user), class: 'btn btn-danger' %></th>
+            <th><%= link_to "退会する", user_withdrawal_path(current_user), class: "btn btn-danger ml-5" , method: :patch, data: {confirm:  "本当に退会しますか？"} %></th>
           </table>
         </div>
         <% end %>
