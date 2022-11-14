@@ -22,7 +22,7 @@
 
           <tr>
             <th>メニュー説明</th>
-            <td><%= @menu.body %></td>
+            <td><%= safe_join(@menu.body.split("\n"),tag(:br)) %></td>
           </tr>
         </table>
           <%= link_to "削除", admin_menu_path(@menu), method: :delete, class: "btn btn-danger pull-center"%>
